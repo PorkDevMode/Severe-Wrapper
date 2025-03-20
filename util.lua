@@ -10,7 +10,9 @@ util.offsets = {
     
     sizex = 0x2b0,
     sizey = 0x2b4,
-    sizez = 0x2b8
+    sizez = 0x2b8,
+
+    transparency = 0xf0
 }
 
 --[[
@@ -62,6 +64,40 @@ function util.getsize(part)
         y = ptrtable:GetMemoryValue(util.offsets.sizey, "float"),
         z = ptrtable:GetMemoryValue(util.offsets.sizez, "float")
     }
+end
+
+--[[
+Asyncronous because no return value needed
+Takes: Part, Transparency Value
+Returns: None
+]]--
+function util.settransparency(part, value)
+    spawn(function()
+        if not part then
+            print("Part is invalid!")
+        end
+
+        if value > 1 or value < 0 then
+            print("Values is below or higher than 0 or 1, use values between 1 - 0.")
+        end
+
+        part:SetMemoryValue(0xf0, "float", value)
+    end)
+end
+
+--[[
+Takes: Part
+Returns: Float
+]]--
+function util.gettransparency(part)
+    if not part then
+        print("Part is invalid!")
+        return nil
+    end
+
+    local transparencyvalue = part:GetMemoryValue(0xf0, "float")
+
+    return transparencyvalue
 end
 
 return util
