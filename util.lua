@@ -17,15 +17,23 @@ util.offsets = {
 
 --[[
 Takes: int, int, int
-Returns: Table: {x, y, z}
+Returns: Table: {x = int, y = int, z = int}
 ]]--
 function util.Vector3(x, y, z)
     return {x = x, y = y, z = z}
 end
 
 --[[
+Takes: int, int
+Returns: Table: {x = int, y = int}
+]]--
+function util.Vector2(x, y)
+    return {x = x, y = y}
+end
+
+--[[
 Asyncronous cause no return value.
-Takes: Part, Vector3 {x, y, z}
+Takes: Part, Vector3 {x = int, y = int, z = int}
 Returns: None
 ]]--
 function util.setsize(part, sizevector)
@@ -48,7 +56,7 @@ end
 
 --[[
 Takes: Part
-Returns: Table: {x, y, z}
+Returns: Table: {x = int, y = int, z = int}
 ]]--
 function util.getsize(part)
     if not part then
