@@ -14,7 +14,8 @@ util.offsets = {
     sizez = 0x2b8,
 
     transparency = 0xf0,
-    hipheight = 0x1a0
+    hipheight = 0x1a0,
+    jumppower = 0x1b0
 }
 
 --[[
@@ -142,6 +143,41 @@ function util.sethipheight(humanoid, value)
         end
 
         setmemoryvalue(humanoid, util.offsets.hipheight, "float", value)
+    end)
+end
+
+--[[
+Takes: Humanoid
+Returns: Float
+]]--
+function util.getjumppower(humanoid)
+    if not humanoid then
+        print("Humanoid is invalid!")
+        return nil
+    end
+
+    local jumppower = humanoid:GetMemoryValue(util.offsets.jumppower, "float")
+    if jumppower then
+        return jumppower
+    else
+        print("Could not find jump power")
+        return nil
+    end
+end
+
+--[[
+Asyncronous no need for a return value
+Takes: Humanoid, Jumppower value
+Returns: None
+]]--
+function util.setjumppower(humanoid, value)
+    spawn(function()
+        if not humanoid then
+            print("Humanoid is invalid!")
+            return nil
+        end
+
+        setmemoryvalue(humanoid, util.offsets.jumppower, "float", value)
     end)
 end
 
