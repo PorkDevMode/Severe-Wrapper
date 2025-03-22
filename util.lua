@@ -12,7 +12,8 @@ util.offsets = {
     sizey = 0x2b4,
     sizez = 0x2b8,
 
-    transparency = 0xf0
+    transparency = 0xf0,
+    hipheight = 0x1a0
 }
 
 --[[
@@ -89,7 +90,7 @@ function util.settransparency(part, value)
             print("Values is below or higher than 0 or 1, use values between 1 - 0.")
         end
 
-        part:SetMemoryValue(0xf0, "float", value)
+        part:SetMemoryValue(util.offsets.transparency, "float", value)
     end)
 end
 
@@ -103,7 +104,7 @@ function util.gettransparency(part)
         return nil
     end
 
-    local transparencyvalue = part:GetMemoryValue(0xf0, "float")
+    local transparencyvalue = part:GetMemoryValue(util.offsets.transparency, "float")
 
     return transparencyvalue
 end
@@ -118,7 +119,7 @@ function util.gethipheight(humanoid)
         return nil
     end
 
-    local hipheight = humanoid:GetMemoryValue(0x1a0, "float")
+    local hipheight = humanoid:GetMemoryValue(util.offsets.hipheight, "float")
     if hipheight then
         return hipheight
     else
@@ -129,17 +130,17 @@ end
 
 --[[
 Asyncronous no need for a return value
-Takes: Humanoid
+Takes: Humanoid, Hipheight value
 Returns: None
 ]]--
-function util.sethipheight(humanoid)
+function util.sethipheight(humanoid, value)
     spawn(function()
         if not humanoid then
             print("Humanoid is invalid!")
             return nil
         end
 
-        humanoid:SetMemoryValue(0x1a0, "float", "float")
+        humanoid:SetMemoryValue(util.offsets.hipheight, "float", value)
     end)
 end
 
