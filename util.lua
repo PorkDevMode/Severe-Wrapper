@@ -7,6 +7,7 @@ Offsets table
 ]]--
 util.offsets = {
     primitive = 0x168,
+    parent = 0x50,
     
     sizex = 0x2b0,
     sizey = 0x2b4,
@@ -90,7 +91,7 @@ function util.settransparency(part, value)
             print("Values is below or higher than 0 or 1, use values between 1 - 0.")
         end
 
-        part:SetMemoryValue(util.offsets.transparency, "float", value)
+        setmemoryvalue(part, util.offsets.transparency, "float", value)
     end)
 end
 
@@ -140,7 +141,7 @@ function util.sethipheight(humanoid, value)
             return nil
         end
 
-        humanoid:SetMemoryValue(util.offsets.hipheight, "float", value)
+        setmemoryvalue(humanoid, util.offsets.hipheight, "float", value)
     end)
 end
 
