@@ -15,7 +15,8 @@ util.offsets = {
 
     transparency = 0xf0,
     hipheight = 0x1a0,
-    jumppower = 0x1b0
+    jumppower = 0x1ac,
+    maxslopeangle = 0x1b8
 }
 
 --[[
