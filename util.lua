@@ -108,4 +108,39 @@ function util.gettransparency(part)
     return transparencyvalue
 end
 
+--[[
+Takes: Humanoid
+Returns: Float
+]]--
+function util.gethipheight(humanoid)
+    if not humanoid then
+        print("Humanoid is invalid!")
+        return nil
+    end
+
+    local hipheight = humanoid:GetMemoryValue(0x1a0, "float")
+    if hipheight then
+        return hipheight
+    else
+        print("Could not find hipheight")
+        return nil
+    end
+end
+
+--[[
+Asyncronous no need for a return value
+Takes: Humanoid
+Returns: None
+]]--
+function util.sethipheight(humanoid)
+    spawn(function()
+        if not humanoid then
+            print("Humanoid is invalid!")
+            return nil
+        end
+
+        humanoid:SetMemoryValue(0x1a0, "float", "float")
+    end)
+end
+
 return util
