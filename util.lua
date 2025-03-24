@@ -157,7 +157,7 @@ function util.getjumppower(humanoid)
         return nil
     end
 
-    local jumppower = humanoid:GetMemoryValue(util.offsets.jumppower, "float")
+    local jumppower = getmemoryvalue(humanoid, util.offsets.jumppower, "float")
     if jumppower then
         return jumppower
     else
