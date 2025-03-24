@@ -1,10 +1,10 @@
-
 # Memory utility setup:
 
 How to use:
 go to github link and make a folder named data at C:/v2. Put util.lua in that data version
 in other scripts do or use the loadstring
 
+-- Scroll down for the keybind library information
 ***Example:***
 
 ```
@@ -94,3 +94,51 @@ CURRENT OFFSETS:
 ```
 
 # Keybind library setup
+
+How to use:
+go to github link and make a folder named data at C:/v2. Put keybind.lua in that data version
+in other scripts do or use the loadstring
+
+***Example:***
+
+```
+local keybind = loadstring(readfile("keybind.lua"))() -- local file
+local keybind = loadstring(game:HttpGet("https://raw.githubusercontent.com/PorkDevMode/Severe-Wrapper/refs/heads/main/keybind.lua"))() -- loadstring
+
+local yes = true
+
+local function setyes()
+    yes = false
+end
+
+keybind.addbind(setyes, "Space", 0.4) -- our callback function, our key, our delay it waits after executing said function so it does not spam
+keybind.start() -- start our keybind listener
+keybind.delbind("Space") -- delete our keybind
+keybind.stop() -- stop the keybind listener
+```
+***Keybind util documentation:***
+```
+--[[
+Takes: function, keycode (string), delay (int)
+Returns: bool
+]]--
+keybind.addbind(bindfunction, key, delay)
+
+--[[
+Takes: keycode (string)
+Returns: bool
+]]--
+keybind.delbind(key)
+
+--[[
+Takes: None
+Returns: None
+]]--
+keybind.start()
+
+--[[
+Takes: None
+Returns: None
+]]--
+keybind.stop()
+```
