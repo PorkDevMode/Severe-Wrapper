@@ -27,9 +27,10 @@ Returns: bool
 function keybind.delbind(key)
     if not keybind.bindfunctions[key] then
         print("This keybind does not exist!")
-        return true
+        return false
     end
     keybind.bindfunctions[key] = nil
+    return true
 end
 
 --[[
