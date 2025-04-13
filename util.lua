@@ -6,7 +6,7 @@ local util = {
 Offsets table
 ]]--
 util.offsets = {
-    primitive = 0x168,
+    primitive = 0x170,
     parent = 0x50,
     
     sizex = 0x2b0,
