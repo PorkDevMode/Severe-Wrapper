@@ -13,7 +13,7 @@ util.offsets = {
     sizey = 0x2b4,
     sizez = 0x2b8,
 
-    transparency = 0xf0,
+    transparency = 0xf8,
     hipheight = 0x1a0,
     jumppower = 0x1ac,
     maxslopeangle = 0x1b8
